@@ -48,7 +48,8 @@ public class PriorityQueue<E> {
     }
 
     public void clear() {
-        queueHeap.clear();
+        queueHeap = null;
+        queueHeap = new ArrayList<Node>();
     }
 
     public int size() {
