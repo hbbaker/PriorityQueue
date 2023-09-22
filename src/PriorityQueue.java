@@ -42,7 +42,9 @@ public class PriorityQueue<E> {
     //Public PriorityQueue methods
     public void add(E object, int score) {
         // Create new node with object and score
+        Node newNode = new Node(object, score);
         // Add node to queueHeap
+        queueHeap.add(newNode);
         // heapify() to ensure accuracy
 
     }
@@ -54,6 +56,15 @@ public class PriorityQueue<E> {
 
     public int size() {
         return queueHeap.size();
+    }
+
+    public boolean contains(E object) {
+        for(Node n : queueHeap) {
+            if(n.getData() == object) { // Make sure that you can use == method for comparison
+                return true;
+            }
+        }
+        return false;
     }
 
     public E getNext() {
@@ -74,12 +85,12 @@ public class PriorityQueue<E> {
     }
 
     public String toString() {
-        String queueString = "[ ";
+        StringBuilder queueString = new StringBuilder("[ ");
         for(Node node:queueHeap) {
-
+            queueString.append("("+ node.getData()+", "+node.getPriority()+")");
         }
-        queueString += " ]";
-        return queueString;
+        queueString.append(" ]");
+        return queueString.toString();
     }
 
     //Private Heap-related methods
@@ -93,5 +104,4 @@ public class PriorityQueue<E> {
         }
 
     }
-
 }
