@@ -74,7 +74,12 @@ public class PriorityQueue<E> {
     }
 
     public String toString() {
-        return null;
+        String queueString = "[ ";
+        for(Node node:queueHeap) {
+
+        }
+        queueString += " ]";
+        return queueString;
     }
 
     //Private Heap-related methods
