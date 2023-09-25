@@ -12,7 +12,7 @@ public class PriorityQueue<E> {
 
         public Node(E inputObj, int score) {
             data = inputObj;
-            score = priority;
+            priority = score;
         }
 
         public E getData() {
@@ -47,7 +47,7 @@ public class PriorityQueue<E> {
         // Add node to queueHeap
         queueHeap.add(newNode);
         // swim() node into correct heap order
-
+        swim();
     }
 
     public void clear() {
@@ -69,7 +69,7 @@ public class PriorityQueue<E> {
     }
 
     public E getNext() {
-        // Check highFirst and grab from top or bottom depending on which priority is requested
+        // swap head and end, sink head, end in temp var, remove end, return temp
         return null;
     }
 
@@ -86,32 +86,62 @@ public class PriorityQueue<E> {
     }
 
     public String toString() {
-        StringBuilder queueString = new StringBuilder("[ ");
+        StringBuilder queueString = new StringBuilder("[");
         int queueSize = queueHeap.size();
 
         for(int i = 0; i < queueSize; i++){
             if(i == queueSize-1) {
-                queueString.append("("+ queueHeap.get(i).getData()+", "+queueHeap.get(i).getPriority()+") ");
+                queueString.append("("+ queueHeap.get(i).getData()+", "+queueHeap.get(i).getPriority()+")");
             } else {
                 queueString.append("("+ queueHeap.get(i).getData()+", "+queueHeap.get(i).getPriority()+"), ");
             }
 
         }
-        queueString.append(" ]");
+        queueString.append("]");
         return queueString.toString();
     }
 
     //Private Heap-related methods
-    private void sink(ArrayList<E> list) {
+    // Sinking and Swimming insights found at: https://mathcenter.oxford.emory.edu/site/cs171/sinkAndSwim/
+    private void sink() {
         // heap sink() function, called when removing from the PQ
+        //get left child of root
+
+        //get right child of root
+
+        //compare L and R
+
+        //if L > R &&
 
     }
 
-    private void swim(ArrayList<E> list) {
+    private void swim() {
         // heap swim function, called when inserting to the PQ
+
+        int i = queueHeap.size()-1;
+
+        while (i > 0) {
+            int j = (i-1)/2;
+            if(compare(queueHeap.get(i),queueHeap.get(j))) {
+                swap(i, j);
+                i = j;
+                //System.out.println(i);
+            } else {
+                //System.out.println("No swap, i= "+i);
+                break;
+            }
+        }
     }
 
     private void swap(int i, int j) {
         Collections.swap(queueHeap, i, j);
+    }
+
+    private boolean compare(Node a, Node b) {
+        // Check this logic once sink and swim are implemented, this could be wrong
+        if(hiFirst) {
+            return (a.getPriority() > b.getPriority());
+        }
+        return (a.getPriority() < b.getPriority());
     }
 }
