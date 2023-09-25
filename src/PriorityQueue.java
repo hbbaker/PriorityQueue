@@ -87,9 +87,10 @@ public class PriorityQueue<E> {
 
     public String toString() {
         StringBuilder queueString = new StringBuilder("[ ");
+        int queueSize = queueHeap.size();
 
-        for(int i = 0; i < queueHeap.size(); i++){
-            if(i == queueHeap.size()-1) {
+        for(int i = 0; i < queueSize; i++){
+            if(i == queueSize-1) {
                 queueString.append("("+ queueHeap.get(i).getData()+", "+queueHeap.get(i).getPriority()+") ");
             } else {
                 queueString.append("("+ queueHeap.get(i).getData()+", "+queueHeap.get(i).getPriority()+"), ");
