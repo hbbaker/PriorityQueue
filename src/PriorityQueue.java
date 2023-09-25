@@ -46,7 +46,7 @@ public class PriorityQueue<E> {
         Node newNode = new Node(object, score);
         // Add node to queueHeap
         queueHeap.add(newNode);
-        // sink or swim based on highFirst
+        // swim() node into correct heap order
 
     }
 
@@ -87,8 +87,14 @@ public class PriorityQueue<E> {
 
     public String toString() {
         StringBuilder queueString = new StringBuilder("[ ");
-        for(Node node:queueHeap) {
-            queueString.append("("+ node.getData()+", "+node.getPriority()+") ");
+
+        for(int i = 0; i < queueHeap.size(); i++){
+            if(i == queueHeap.size()-1) {
+                queueString.append("("+ queueHeap.get(i).getData()+", "+queueHeap.get(i).getPriority()+") ");
+            } else {
+                queueString.append("("+ queueHeap.get(i).getData()+", "+queueHeap.get(i).getPriority()+"), ");
+            }
+
         }
         queueString.append(" ]");
         return queueString.toString();
