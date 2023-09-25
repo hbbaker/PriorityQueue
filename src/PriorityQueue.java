@@ -3,10 +3,11 @@
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class PriorityQueue<E> {
     private class Node {
-        private E data;
+        private final E data;
         private int priority;
 
         public Node(E inputObj, int score) {
@@ -45,7 +46,7 @@ public class PriorityQueue<E> {
         Node newNode = new Node(object, score);
         // Add node to queueHeap
         queueHeap.add(newNode);
-        // heapify() to ensure accuracy
+        // sink or swim based on highFirst
 
     }
 
@@ -68,7 +69,7 @@ public class PriorityQueue<E> {
     }
 
     public E getNext() {
-        // Store
+        // Check highFirst and grab from top or bottom depending on which priority is requested
         return null;
     }
 
@@ -87,21 +88,23 @@ public class PriorityQueue<E> {
     public String toString() {
         StringBuilder queueString = new StringBuilder("[ ");
         for(Node node:queueHeap) {
-            queueString.append("("+ node.getData()+", "+node.getPriority()+")");
+            queueString.append("("+ node.getData()+", "+node.getPriority()+") ");
         }
         queueString.append(" ]");
         return queueString.toString();
     }
 
     //Private Heap-related methods
-    private void heapify(ArrayList<E> heap) {
-        //Check hiFirst global, if false then lowFirst, if true then highFirst
-        if(hiFirst) {
-            // Run high first heapify()
+    private void sink(ArrayList<E> list) {
+        // heap sink() function, called when removing from the PQ
 
-        } else {
-            // Run low first heapify()
-        }
+    }
 
+    private void swim(ArrayList<E> list) {
+        // heap swim function, called when inserting to the PQ
+    }
+
+    private void swap(int i, int j) {
+        Collections.swap(queueHeap, i, j);
     }
 }
