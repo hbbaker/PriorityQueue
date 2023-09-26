@@ -70,7 +70,12 @@ public class PriorityQueue<E> {
 
     public E getNext() {
         // swap head and end, sink head, end in temp var, remove end, return temp
-        return null;
+        Node temp = queueHeap.get(0);
+        int size = queueHeap.size()-1;
+        swap(0, size);
+        queueHeap.remove(size);
+        sink();
+        return temp.getData();
     }
 
     public boolean isEmpty() {
@@ -106,6 +111,21 @@ public class PriorityQueue<E> {
     private void sink() {
         // heap sink() function, called when removing from the PQ
         //get left child of root
+        int i = 0;
+
+        while(((2*i)+1) <= queueHeap.size()-1){
+
+            int j = (2*i)+1;
+            if(j < queueHeap.size()-1 && compare(queueHeap.get(j), queueHeap.get(j+1))) {
+                j++;
+            }
+            if(compare(queueHeap.get(l), queueHeap.get(i))) {
+                break;
+            }
+            swap(j, i);
+            i = j;
+
+        }
 
         //get right child of root
 
