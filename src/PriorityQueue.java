@@ -110,7 +110,6 @@ public class PriorityQueue<E> {
     // Sinking and Swimming insights found at: https://mathcenter.oxford.emory.edu/site/cs171/sinkAndSwim/
     private void sink() {
         // heap sink() function, called when removing from the PQ
-        //get left child of root
         int i = 0;
 
         while(((2*i)+1) <= queueHeap.size()-1){
@@ -126,13 +125,6 @@ public class PriorityQueue<E> {
             i = j;
 
         }
-
-        //get right child of root
-
-        //compare L and R
-
-        //if L > R &&
-
     }
 
     private void swim() {

@@ -32,9 +32,15 @@ public class PriorityQueueTest {
 
         System.out.println("Size 1 pQueue: " + queue.toString());
 
+        boolean containsI = queue.contains(i);
+
+        assert containsI;
+
         queue.add(1, 5);
 
         queue.add(5, 3);
+
+        assert queue.size() == 3;
 
         System.out.println("pQueue: " + queue.toString());
 
