@@ -119,7 +119,7 @@ public class PriorityQueue<E> {
             if(j < queueHeap.size()-1 && compare(queueHeap.get(j), queueHeap.get(j+1))) {
                 j++;
             }
-            if(compare(queueHeap.get(l), queueHeap.get(i))) {
+            if(compare(queueHeap.get(j), queueHeap.get(i))) {
                 break;
             }
             swap(j, i);

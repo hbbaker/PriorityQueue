@@ -32,8 +32,17 @@ public class PriorityQueueTest {
 
         System.out.println("Size 1 pQueue: " + queue.toString());
 
+        queue.add(1, 5);
 
+        queue.add(5, 3);
 
+        System.out.println("pQueue: " + queue.toString());
+
+        int j = queue.getNext();
+
+        System.out.println("Highest Priority item should be 5: " + j);
+
+        System.out.println("pQueue: " + queue.toString());
 
     }
 }
